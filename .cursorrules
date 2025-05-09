@@ -1,0 +1,33 @@
+# 🧠 Lezioni Apprese e Appunti Veloci - Portafoglio di Markowitz
+
+Questo file serve come repository centrale per le lezioni apprese durante lo sviluppo, decisioni di design rapide, frammenti di codice utili, e qualsiasi altra nota pertinente al progetto "Portafoglio di Markowitz". L'obiettivo è facilitare la condivisione della conoscenza e mantenere traccia delle scoperte e delle sfide incontrate.
+
+## Formato Suggerito
+
+Per ogni voce, includere:
+
+-   **Data:** (YYYY-MM-DD)
+-   **Titolo/Contesto:** Breve descrizione dell'argomento.
+-   **Descrizione/Lezione:** Dettagli della lezione appresa, del problema riscontrato, della soluzione adottata, o dell'appunto.
+-   **Tag/Parole Chiave:** (Opzionale, per facilitare la ricerca, es. `#performance`, `#bugfix`, `#refactor`, `#nextjs`, `#vercel`)
+
+---
+
+## Esempio di Voce
+
+-   **Data:** 2023-10-27
+-   **Titolo/Contesto:** Ottimizzazione query API per `getPortfolioHistory`
+-   **Descrizione/Lezione:** Inizialmente la query era lenta a causa di join inefficienti. Ristrutturata la query e aggiunto un indice sulla colonna `timestamp` della tabella `trades`, migliorando i tempi di risposta del 70%.
+-   **Tag/Parole Chiave:** `#performance`, `#database`, `#api`, `#sql`
+
+---
+
+## Lezioni Apprese e Appunti
+
+*(Aggiungere qui le voci man mano che emergono)*
+
+
+
+---
+
+*Questo file è un documento vivo. Incoraggiare tutti i membri del team a contribuire regolarmente.*
