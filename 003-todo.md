@@ -1,22 +1,22 @@
 # 📝 Development Roadmap
 
 ## 🎯 Sprint 1: Setup and Foundation (Focus: Portafoglio di Markowitz)
-- [ ] 1.1 Initialize Git repository for "Portafoglio di Markowitz"
-- [ ] 1.2 Setup Next.js 14 (App Router) development environment with TypeScript
+- [x] 1.1 Initialize Git repository for "Portafoglio di Markowitz"
+- [x] 1.2 Setup Next.js 14 (App Router) development environment with TypeScript
 - [ ] 1.3 Configure ESLint, Prettier for code quality
 - [ ] 1.4 Create initial folder structure based on `002-architecture.md`
-- [ ] 1.5 Setup basic CI/CD pipeline with Vercel
-- [ ] 1.6 Install base dependencies: Next.js, React, Tailwind CSS, shadcn/ui, NextAuth.js, Prisma, Zod, Jest, React Testing Library, Playwright.
+- [x] 1.5 Setup basic CI/CD pipeline with Vercel
+- [x] 1.6 Install base dependencies: Next.js, React, Tailwind CSS, shadcn/ui, NextAuth.js, Prisma, Zod, Jest, React Testing Library, Playwright.
 
 ## 🏗️ Sprint 2: Core Features - Data Model & Basic APIs (Focus: Portafoglio di Markowitz)
-- [ ] 2.1 Define Prisma schema for Users and InvestmentTips (including fields for search, list, details)
-- [ ] 2.2 Setup PostgreSQL database and run initial migrations with Prisma
-- [ ] 2.3 Create API endpoints (Next.js API Routes / tRPC) for:
-    - [ ] 2.3.1 User registration (`/api/auth/register`)
-    - [ ] 2.3.2 User login (`/api/auth/login`)
-    - [ ] 2.3.3 Fetching current user (`/api/auth/me`)
-    - [ ] 2.3.4 Fetching investment tips (list, paginated, filterable - `/api/tips`)
-    - [ ] 2.3.5 Fetching single investment tip details (`/api/tips/{tipId}`)
+- [x] 2.1 Define Prisma schema for Users and InvestmentTips (including fields for search, list, details)
+- [x] 2.2 Setup PostgreSQL database and run initial migrations with Prisma
+- [x] 2.3 Create API endpoints (Next.js API Routes / tRPC) for:
+    - [x] 2.3.1 User registration (`/api/auth/register`)
+    - [x] 2.3.2 User login (`/api/auth/login`)
+    - [x] 2.3.3 Fetching current user (`/api/auth/me`)
+    - [x] 2.3.4 Fetching investment tips (list, paginated, filterable - `/api/tips`)
+    - [x] 2.3.5 Fetching single investment tip details (`/api/tips/{tipId}`)
 - [ ] 2.4 Develop base UI components using shadcn/ui:
     - [ ] 2.4.1 Layout (Navbar, Footer)
     - [ ] 2.4.2 Buttons, Inputs, Cards
@@ -53,6 +53,7 @@
     - [ ] 5.2.1 Ensure responsive design across Mobile, Tablet, Desktop
     - [ ] 5.2.2 Add subtle animations/transitions with Framer Motion (optional)
     - [ ] 5.2.3 Check accessibility (WCAG AA compliance where possible)
+    - [ ] 5.2.4 Implement Dark/Light mode
 - [ ] 5.3 Add UI feedback and microinteractions (loading states, error messages)
 - [ ] 5.4 Review and complete project documentation (README, API docs if needed)
 - [ ] 5.5 Perform a security audit (check for XSS, CSRF, SQLi, secure JWT handling)

@@ -1,0 +1,49 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/.prisma/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String          @id @default(cuid())
+  email         String          @unique
+  name          String?
+  password      String          // Remember to hash passwords before storing
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  investmentTips InvestmentTip[]
+  favorites     UserFavorite[]
+}
+
+model InvestmentTip {
+  id              String   @id @default(cuid())
+  title           String
+  content         String
+  category        String?  // e.g., Stocks, Bonds, Real Estate
+  riskLevel       String?  // e.g., Low, Medium, High
+  potentialReturn String?  // e.g., 5-10%
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  author          User     @relation(fields: [authorId], references: [id])
+  authorId        String
+  favoritedBy     UserFavorite[]
+}
+
+model UserFavorite {
+  id              String        @id @default(cuid())
+  userId          String
+  investmentTipId String
+  createdAt       DateTime      @default(now())
+
+  user            User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  investmentTip   InvestmentTip @relation(fields: [investmentTipId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, investmentTipId])
+}

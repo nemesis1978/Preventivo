@@ -1,102 +1,97 @@
-import Image from "next/image";
+import { Button } from "@/components/ui/Button";
+import { Input } from "@/components/ui/Input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/Select";
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/Card";
 
-export default function Home() {
+// Mock data for investment tips
+const investmentTips = [
+  { id: 1, title: "Tech Stock Alpha", category: "Stocks", risk: "High", summary: "Promising tech stock with high growth potential." },
+  { id: 2, title: "Real Estate Gem", category: "Real Estate", risk: "Medium", summary: "Undervalued property in an emerging market." },
+  { id: 3, title: "Green Energy Bond", category: "Bonds", risk: "Low", summary: "Stable returns from a renewable energy project." },
+  { id: 4, title: "Crypto Innovator", category: "Crypto", risk: "Very High", summary: "Next-gen cryptocurrency with disruptive technology." },
+  { id: 5, title: "Diversified ETF", category: "ETF", risk: "Medium", summary: "Broad market exposure with a single investment." },
+];
+
+export default function InvestmentTipsPage() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="container mx-auto py-8 px-4 font-[family-name:var(--font-geist-sans)]">
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold text-center">Spunti di Investimento Curati</h1>
+        <p className="text-lg text-muted-foreground text-center mt-2">
+          Esplora la nostra lista dinamica di opportunità di investimento, selezionate per te.
+        </p>
+      </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+      {/* Filters and Sorting Section */}
+      <div className="mb-6 p-4 border rounded-lg shadow-sm bg-card">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 items-end">
+          <div>
+            <label htmlFor="search" className="block text-sm font-medium text-foreground mb-1">Cerca per Titolo</label>
+            <Input id="search" placeholder="Es. Tech Stock Alpha" className="w-full" />
+          </div>
+          <div>
+            <label htmlFor="category" className="block text-sm font-medium text-foreground mb-1">Filtra per Categoria</label>
+            <Select>
+              <SelectTrigger id="category" className="w-full">
+                <SelectValue placeholder="Seleziona Categoria" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Tutte</SelectItem>
+                <SelectItem value="stocks">Azioni</SelectItem>
+                <SelectItem value="bonds">Obbligazioni</SelectItem>
+                <SelectItem value="real_estate">Immobiliare</SelectItem>
+                <SelectItem value="crypto">Criptovalute</SelectItem>
+                <SelectItem value="etf">ETF</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div>
+            <label htmlFor="sort" className="block text-sm font-medium text-foreground mb-1">Ordina Per</label>
+            <Select>
+              <SelectTrigger id="sort" className="w-full">
+                <SelectValue placeholder="Seleziona Ordinamento" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="date_desc">Più Recenti</SelectItem>
+                <SelectItem value="date_asc">Meno Recenti</SelectItem>
+                <SelectItem value="risk_asc">Rischio (Basso > Alto)</SelectItem>
+                <SelectItem value="risk_desc">Rischio (Alto > Basso)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </div>
+
+      {/* Investment Tips List */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {investmentTips.map((tip) => (
+          <Card key={tip.id} className="flex flex-col">
+            <CardHeader>
+              <CardTitle>{tip.title}</CardTitle>
+              <CardDescription>Categoria: {tip.category} - Rischio: {tip.risk}</CardDescription>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <p>{tip.summary}</p>
+            </CardContent>
+            <CardFooter>
+              <Button variant="outline" className="w-full">Vedi Dettagli</Button>
+            </CardFooter>
+          </Card>
+        ))}
+      </div>
+
+      {/* Pagination Section */}
+      <div className="mt-8 flex justify-center items-center space-x-2">
+        <Button variant="outline">Precedente</Button>
+        <span className="text-sm text-muted-foreground">Pagina 1 di X</span>
+        <Button variant="outline">Successivo</Button>
+      </div>
+
+      <footer className="mt-12 pt-8 border-t text-center text-muted-foreground">
+        <p>&copy; {new Date().getFullYear()} Portafoglio di Markowitz. Tutti i diritti riservati.</p>
+        <p className="text-xs mt-1">
+          Le informazioni fornite sono solo a scopo informativo e non costituiscono consulenza finanziaria.
+        </p>
       </footer>
     </div>
   );
